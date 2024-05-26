@@ -13,6 +13,7 @@ export default function Login() {
         />
       </div>
       <span className="text-4xl font-semibold text-center">Inicio de sesion</span>
+      
       <FormLogin />
 
       <span className="text-sm font-light text-slate-400 hover:underline tracking-wide cursor-pointer text-center">
