@@ -6,7 +6,7 @@ export default function layout({
   return (
     <div>
       <NavbarMenu />
-      <main className="pt-14 px-1 md:px-5 h-svh">{children}</main>
+      <main className="pt-14 px-3 md:px-5 h-svh">{children}</main>
     </div>
   );
 }

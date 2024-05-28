@@ -12,18 +12,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-
-export const navItems = [
-  {
-    name: "Estado de cuenta",
-    href: "/menu/cuenta",
-    icon: User,
-  },
-];
+import Modal from "./modal";
 
 export default function UserNav() {
   // Obtenemos la primera letra del nombre para mostrarla en el avatar si no hay imagen o no la ha cargado
@@ -37,10 +29,8 @@ export default function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant={"ghost"} className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10 rounded-full">
-            {/* <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /> */}
-            <AvatarFallback>
-              {fisrtLetter}
-            </AvatarFallback>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>{fisrtLetter}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -51,30 +41,38 @@ export default function UserNav() {
             <p className="text-sm font-medium leading-none truncate">
               Nombre del usuario
             </p>
-            <p className="text-xs text-muted-foreground  truncate">
-              @Correo
-            </p>
+            <p className="text-xs text-muted-foreground  truncate">@Correo</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="grid items-start gap-2">
-          {navItems.map((item, index) => (
-            <DropdownMenuItem asChild key={index}>
-              <Link
-                href={item.href}
-                className={cn(
-                  "group w-full flex flex-row justify-between items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                  // los && son para aplicar una clase si se cumple la condición
-                  pathname === item.href && "bg-accent text-accent-foreground"
-                )}
-              >
-                {item.name}
-                <span>
-                  <item.icon className="w-4 h-4" />
-                </span>
-              </Link>
-            </DropdownMenuItem>
-          ))}
+          <DropdownMenuItem asChild>
+
+            {/* <div> */}
+            <Modal
+              trigger={
+                <div
+                  className={cn(
+                    "group w-full flex flex-row justify-between items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  Estado de cuenta
+                  <span>
+                    <User className="w-4 h-4" />
+                  </span>
+                </div>
+              }
+              title="Estado de cuenta"
+              content={
+                <div className="w-full flex flex-col">
+                  <span>Nombre del padre</span>
+                  <span>Pago: Pendienta a realizar</span>
+                </div>
+              }
+            />
+            {/* </div> */}
+
+          </DropdownMenuItem>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />

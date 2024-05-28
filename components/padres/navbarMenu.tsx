@@ -89,7 +89,7 @@ export default function NavbarMenu() {
                       "bg-slate-200 px-2 py-1 rounded-md transition-all duration-300 ease-in-out"
                   )}
                 >
-                  <SheetClose className="flex items-center gap-2">
+                  <SheetClose className="flex items-center gap-2 w-full">
                     <item.icon className={item.class} />
                     <span>{item.name}</span>
                   </SheetClose>
