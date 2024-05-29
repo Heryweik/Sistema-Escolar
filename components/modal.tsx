@@ -19,6 +19,7 @@ interface ModalProps {
   date?: string;
   icon?: ReactElement;
   content: ReactElement;
+  calendar?: boolean;
   footer?: ReactElement;
   // form es por defecto true
   form?: boolean;
@@ -30,13 +31,14 @@ export default function Modal({
   date,
   icon,
   content,
+  calendar,
   footer,
   form,
 }: ModalProps) {
   return (
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent calendar={calendar}>
         <DialogHeader>
           <DialogTitle
             className={cn(
@@ -44,10 +46,10 @@ export default function Modal({
               icon ? "justify-center sm:justify-between gap-2 px-3" : ""
             )}
           >
-            <span className="order-2 sm:order-1">{title}</span>
+            <span className="order-3 sm:order-1">{title}</span>
             <span className="text-sm text-muted-foreground font-light order-1 sm:order-2">{date}</span>
             {icon && (
-              <span className="w-10 sm:w-7 h-10 sm:h-7 order-3 flex items-center justify-center">
+              <span className="w-10 sm:w-7 h-10 sm:h-7 order-2 flex items-center justify-center">
                 {React.cloneElement(icon, { className: "w-full h-full" })}
               </span>
             )}

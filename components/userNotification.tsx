@@ -16,58 +16,20 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-
-export const bellItems = [
-  {
-    name: "Nombre del estudiante",
-    icon1: User,
-    icon2: FilePen,
-    asignacion: [
-      {
-        name: "Nueva asignación de la clase XXXXX",
-        href: "/asignaciones",
-      },
-      {
-        name: "Nueva asignación de la clase XXXXX",
-        href: "/asignaciones",
-      },
-    ],
-  },
-  {
-    name: "Nombre del estudiante",
-    icon1: User,
-    icon2: FilePen,
-    asignacion: [
-      {
-        name: "Nueva asignación de la clase XXXXX",
-        href: "/asignaciones",
-      },
-      {
-        name: "Nueva asignación de la clase XXXXX",
-        href: "/asignaciones",
-      },
-    ],
-  },
-  {
-    name: "Nombre del estudiante",
-    icon1: User,
-    icon2: FilePen,
-    asignacion: [
-      {
-        name: "Nueva asignación de la clase XXXXX",
-        href: "/asignaciones",
-      },
-      {
-        name: "Nueva asignación de la clase XXXXX asdasd asd as d ",
-        href: "/asignaciones",
-      },
-    ],
-  },
-];
+import { infoStudents } from "@/lib/dataStudents";
+import { space } from "postcss/lib/list";
+import { Span } from "next/dist/trace";
 
 export default function UserNotification() {
-  // Obtenemos la primera letra del nombre para mostrarla en el avatar si no hay imagen o no la ha cargado
-  /* const fisrtLetter = name.charAt(0).toUpperCase(); */
+
+  // Informacion de los estudiantes
+  const students = infoStudents;
+
+  // Cantidad de asignaciones en total de todos los estudiantes
+  const totalAsigments = students.reduce(
+    (acc, student) => acc + student.assignments.length,
+    0
+  );
 
   const pathname = usePathname();
 
@@ -79,9 +41,9 @@ export default function UserNotification() {
           variant={"ghost"}
           className="rounded-full relative"
         >
-          <Bell className="w-7 h-7 " />
+          <FilePen className="w-7 h-7 " />
           <span className="absolute right-0 top-0 border border-slate-900 rounded-full w-5 h-5 p-1 bg-white text-xs grid place-content-center">
-            2
+            {totalAsigments}
           </span>
         </Button>
       </DropdownMenuTrigger>
@@ -96,7 +58,7 @@ export default function UserNotification() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="grid items-start gap-2">
-          {bellItems.map((item, index) => (
+          {students.map((item, index) => (
             <DropdownMenuItem asChild key={index}>
               <div
                 className={
@@ -105,27 +67,32 @@ export default function UserNotification() {
               >
                 <div className="w-full flex gap-2">
                   <span>
-                    <item.icon1 className="w-4 h-4" />
+                    <User className="w-4 h-4" />
                   </span>
                   {item.name}
                 </div>
 
-                {item.asignacion.map((asignacion, index) => (
-                  <a
+                {item.assignments.length === 0 && <span>No hay asignaciones</span>}
+
+                {item.assignments.map((asignacion, index) => (
+                  <Link
                     key={index}
-                    href={asignacion.href}
+                    href={'/asignaciones'}
                     className={cn(
-                      "flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                      // los && son para aplicar una clase si se cumple la condición
-                      pathname === asignacion.href &&
-                        "bg-accent text-accent-foreground"
+                      "flex items-center w-full gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
                     )}
+                    onClick={() => {
+                      // Guardamos el id del estudiante en el localStorage
+                      localStorage.setItem("studentId", item.id.toString());
+                      // Refrescamos la pagina si estamos en la pagina de asignaciones para que se renderize de nuevo la UI
+                      if (pathname === '/asignaciones') window.location.reload();
+                    }}
                   >
                     <span>
-                      <item.icon2 className="w-4 h-4" />
+                      <FilePen className="w-4 h-4" />
                     </span>
                     {asignacion.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </DropdownMenuItem>

@@ -146,7 +146,7 @@ export default function EstudiantesPage() {
                           // Este trigger es el qeu causa el error de hidration ya que por dentro del triger es un button
                           // Una solucion seria estilar un div y darle los estilos del Button
                           trigger={
-                            <div className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
+                            <div className="button-default-watch">
                               Ver
                             </div>
                           }
@@ -174,7 +174,7 @@ export default function EstudiantesPage() {
 
                       <Modal
                         trigger={
-                          <div className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
+                          <div className="button-default-watch">
                             Ver
                           </div>
                         }

@@ -110,7 +110,7 @@ export default function ClasesPage() {
                         {/* Modal de la clase */}
                         <Modal
                           trigger={<div
-                            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3"
+                            className="button-default-watch"
                           >Ver</div>}
                           title={clase.name}
                           icon={<Book />}

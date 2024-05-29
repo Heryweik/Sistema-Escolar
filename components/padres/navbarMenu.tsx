@@ -112,7 +112,7 @@ export default function NavbarMenu() {
 
       <div
         className={cn(
-          "w-full items-center justify-around gap-2 text-base md:text-lg font-semibold",
+          "w-full items-center justify-around gap-[6px] md:gap-2 text-base md:text-lg font-semibold",
           pathname === "/menu" ? "hidden " : "hidden sm:flex"
         )}
       >
@@ -132,7 +132,7 @@ export default function NavbarMenu() {
         ))}
       </div>
 
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-[2px] md:gap-2">
         {/* Modal que muestra el calendario con las fechas importantes (Feriados eventos y demas) */}
         <ModalDateImportantMenu />
         <UserNotification />

@@ -11,10 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { infoStudents } from "@/lib/dataStudents";
-import {
-  ChevronLeft,
-  FilePen,
-} from "lucide-react";
+import { ChevronLeft, FilePen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -62,7 +59,7 @@ export default function AsignacionesPage() {
         <div className="w-full flex items-center justify-between">
           {/* Modal que muestra el calendario con las fechas importantes (Feriados eventos y demas) */}
           <ModalDateImportant />
-          
+
           <span>Asignaciones: {totalAsigments}</span>
         </div>
         <section className="flex items-center justify-center gap-10 md:gap-24 w-full">
@@ -107,7 +104,7 @@ export default function AsignacionesPage() {
                         {/* Modal de la asignacion */}
                         <Modal
                           trigger={
-                            <div className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
+                            <div className="button-default-watch">
                               Ver
                             </div>
                           }
@@ -130,8 +127,8 @@ export default function AsignacionesPage() {
                     {student.assignments.length === 0 ? (
                       <span>No hay asignaciones</span>
                     ) : (
-                      // Aqui ira la modal del calendario de asignaciones
-                      <Button>Calendario</Button>
+                      /* Modal que muestra el calendario con las asignaciones del estudiante */
+                      <ModalDateImportant asigments />
                     )}
                   </div>
                 </AccordionContent>

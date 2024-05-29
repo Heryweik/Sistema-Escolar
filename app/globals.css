@@ -74,3 +74,69 @@
       @apply bg-background text-foreground;
     }
   }
+
+
+  /* Clases para el calendario */
+  input {
+    @apply px-2;
+  }
+    .fc-header-toolbar {
+      /* display: inline-block;
+      padding: 4px 4px; */
+      
+      @apply space-x-0 text-center flex flex-col items-center justify-center gap-1 md:flex-row text-[11px] md:text-base font-semibold;
+  }
+  
+  .fc-day {
+    @apply m-8;
+  }
+  
+  .fc-scrollgrid-sync-table {
+    @apply w-full;
+  }
+  
+  .fc-view {
+    @apply w-full h-[430px] -mt-1 bg-white;
+  }
+  
+  .fc-h-event {
+    @apply bg-slate-600 hover:bg-slate-500 border border-slate-600 ;
+    
+  }
+  
+  .fc .fc-daygrid-day.fc-day-today {
+    @apply bg-slate-100 ;
+  }
+  
+  .fc .fc-button{
+    @apply bg-slate-900 text-sm md:text-base hover:bg-slate-800 transition ;
+  }
+  
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    @apply bg-slate-600  px-4;
+  }
+  
+  .fc .fc-button-primary:disabled {
+    @apply bg-slate-600 ;
+  }
+  .fc-v-event {
+    @apply bg-slate-600 border border-slate-600 ;
+    
+  }
+
+  /* Clases para div que son estilados como botones */
+  .button-default {
+    @apply hidden sm:block items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2;
+  }
+
+  .button-default-icon {
+    @apply  sm:hidden grid place-content-center  items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-10 ;
+  }
+
+  .button-default-icon-ghost {
+    @apply  grid place-content-center  items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 -mr-2 ;
+  }
+
+  .button-default-watch {
+    @apply  inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3;
+  }

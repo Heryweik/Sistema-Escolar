@@ -1,8 +1,9 @@
-
-
+import CalendarEvent from "@/components/calendar";
 
 export default function AdministracionPage() {
   return (
-    <div>AdministracionPage</div>
+    <div>
+      <CalendarEvent />
+    </div>
   )
 }
