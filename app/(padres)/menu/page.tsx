@@ -50,7 +50,7 @@ export default function MenuPage() {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 w-full">
           {itemMenu.map((item, index) => (
             <Link key={index} href={item.link}>
-              <Card className="hover:bg-slate-100 flex flex-col items-center justify-center gap-4 w-full md:w-80 h-52 transition-all ease-in-out duration-300">
+              <Card className="hover:bg-slate-100 flex flex-col items-center justify-center gap-4 w-full md:w-80 h-40 md:h-52 transition-all ease-in-out duration-300">
                   <item.icon className="w-14 h-14" />
                   <span className="font-medium text-xl">{item.title}</span>
               </Card>

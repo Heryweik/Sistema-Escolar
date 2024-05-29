@@ -11,10 +11,12 @@ import { Button } from "./ui/button";
 import { ReactElement } from "react";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { date } from "zod";
 
 interface ModalProps {
   trigger: ReactElement;
   title: string;
+  date?: string;
   icon?: ReactElement;
   content: ReactElement;
   footer?: ReactElement;
@@ -25,6 +27,7 @@ interface ModalProps {
 export default function Modal({
   trigger,
   title,
+  date,
   icon,
   content,
   footer,
@@ -42,8 +45,9 @@ export default function Modal({
             )}
           >
             <span className="order-2 sm:order-1">{title}</span>
+            <span className="text-sm text-muted-foreground font-light order-1 sm:order-2">{date}</span>
             {icon && (
-              <span className="w-10 sm:w-7 h-10 sm:h-7 order-1 flex items-center justify-center">
+              <span className="w-10 sm:w-7 h-10 sm:h-7 order-3 flex items-center justify-center">
                 {React.cloneElement(icon, { className: "w-full h-full" })}
               </span>
             )}

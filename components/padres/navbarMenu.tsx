@@ -17,6 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ModalDateImportantMenu } from "./modalDateImportant";
 
 export const navItems = [
   {
@@ -132,6 +133,8 @@ export default function NavbarMenu() {
       </div>
 
       <div className="flex items-center justify-center gap-2">
+        {/* Modal que muestra el calendario con las fechas importantes (Feriados eventos y demas) */}
+        <ModalDateImportantMenu />
         <UserNotification />
         <UserNav />
       </div>

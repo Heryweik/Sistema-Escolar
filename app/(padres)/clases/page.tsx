@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { infoStudents } from "@/lib/dataStudents";
 import {
   AlertCircle,
   Book,
@@ -22,91 +23,11 @@ import { useRouter } from "next/navigation";
 import { space } from "postcss/lib/list";
 import { useState } from "react";
 
-// Ejemplo de la informacion que se recibira de los estudiantes
-export const students = [
-  {
-    id: 1,
-    name: "Maryori",
-    classes: [
-      {
-        id: 1,
-        name: "Matemáticas",
-        teacher: "Luis",
-        students: 30,
-      },
-      {
-        id: 2,
-        name: "Física",
-        teacher: "Luis",
-        students: 30,
-      },
-    ],
-    assignments: [],
-  },
-  {
-    id: 2,
-    name: "Brayan",
-    classes: [
-      {
-        id: 1,
-        name: "Matemáticas",
-        teacher: "Luis",
-        students: 30,
-      },
-      {
-        id: 2,
-        name: "Física",
-        teacher: "Luis",
-        students: 30,
-      },
-    ],
-    assignments: [
-      {
-        id: 1,
-        name: "Tarea 1",
-        class: "Física",
-      },
-      {
-        id: 2,
-        name: "Tarea 2",
-        class: "Física",
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "Katia",
-    classes: [
-      {
-        id: 1,
-        name: "Matemáticas",
-        teacher: "Luis",
-        students: 30,
-      },
-      {
-        id: 2,
-        name: "Física",
-        teacher: "Luis",
-        students: 30,
-      },
-    ],
-    assignments: [
-      {
-        id: 1,
-        name: "Tarea 1",
-        class: "Matemáticas",
-      },
-      {
-        id: 2,
-        name: "Tarea 2",
-        class: "Matemáticas",
-      },
-    ],
-  },
-];
-
 export default function ClasesPage() {
   const router = useRouter();
+
+  // Informacion de los estudiantes
+  const students = infoStudents
 
   // estado para controlar si ya se mostro el mensaje de No tienes asignaciones
   let noAssignments = false;
@@ -119,8 +40,12 @@ export default function ClasesPage() {
 
   // Estado para controlar el acordeón activo
   // Esto servira para cuando se necesite que un acordeon en especifico este abierto al redirigir desde otra pagina
+
+  //Obtenemos id del estudiante desde localStorage
+  const studentId = localStorage.getItem("studentId");
+
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
-    students.length > 0 ? `estudiante-${students[0].id}` : null
+    students.length > 0 ? `estudiante-${studentId ? studentId : students[0].id}` : null
   );
 
   return (
@@ -142,7 +67,7 @@ export default function ClasesPage() {
           <div className="w-8"></div>
         </div>
         <div className="w-full flex items-center justify-end">
-          <span>clases: {totalClasses}</span>
+          <span>Clases: {totalClasses}</span>
         </div>
         <section className="flex items-center justify-center gap-10 md:gap-24 w-full">
           <Accordion
@@ -156,7 +81,10 @@ export default function ClasesPage() {
               <AccordionItem
                 key={student.id}
                 value={`estudiante-${student.id}`}
-                
+                onClick={() => {
+                  // Guardamos el id del estudiante en el localStorage
+                  localStorage.setItem("studentId", student.id.toString());
+                }}
               >
                 <AccordionTrigger>
                   <span className="max-w-[45%] w-full truncate text-left">
@@ -181,7 +109,9 @@ export default function ClasesPage() {
 
                         {/* Modal de la clase */}
                         <Modal
-                          trigger={<div>Ver</div>}
+                          trigger={<div
+                            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3"
+                          >Ver</div>}
                           title={clase.name}
                           icon={<Book />}
                           content={
