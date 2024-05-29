@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 
 // Informacion inventada de los estudiantes
 export const infoStudents = [
@@ -47,13 +48,13 @@ export const infoStudents = [
         {
           id: 1,
           name: "Matemáticas",
-          teacher: "Luis",
+          teacher: "Franklin",
           students: 30,
         },
         {
           id: 2,
           name: "Física",
-          teacher: "Luis",
+          teacher: "Franklin",
           students: 30,
         },
       ],
@@ -63,14 +64,18 @@ export const infoStudents = [
           name: "Tarea 1",
           class: "Física",
           description: "Descripcion de la asignacion",
-          dateFinish: "2022-12-12",
+          allDay: true,
+          dateStart: "2024-05-25",
+          dateFinish: "2024-05-30",
         },
         {
           id: 2,
           name: "Tarea 2",
           class: "Física",
           description: "Descripcion de la asignacion",
-          dateFinish: "2022-12-12",
+          allDay: false,
+          dateStart: "2024-05-30T12:00:00",
+          dateFinish: "2024-05-30T16:00:00",
         },
       ],
       atention: [],
@@ -93,13 +98,13 @@ export const infoStudents = [
         {
           id: 1,
           name: "Matemáticas",
-          teacher: "Luis",
+          teacher: "Carlos",
           students: 30,
         },
         {
           id: 2,
           name: "Física",
-          teacher: "Luis",
+          teacher: "Carlos",
           students: 30,
         },
       ],
@@ -109,14 +114,18 @@ export const infoStudents = [
           name: "Tarea 1",
           class: "Matemáticas",
           description: "Descripcion de la asignacion",
-          dateFinish: "2022-12-12",
+          allDay: false,
+          dateStart: "2024-05-30T12:00:00",
+          dateFinish: "2024-05-30T16:00:00",
         },
         {
           id: 2,
           name: "Tarea 2",
           class: "Matemáticas",
           description: "Descripcion de la asignacion",
-          dateFinish: "2022-12-12",
+          allDay: true,
+          dateStart: "2024-05-28",
+          dateFinish: "2024-05-30",
         },
       ],atention: [
         {

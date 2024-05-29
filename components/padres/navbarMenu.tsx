@@ -50,7 +50,7 @@ export default function NavbarMenu() {
   const pathname = usePathname();
 
   return (
-    <nav className="h-14 z-50 border-b border-slate-200 fixed w-full flex items-center justify-between gap-2 px-1 md:px-5 text-center">
+    <nav className="h-14 z-20 border-b border-slate-200 fixed w-full flex items-center justify-between gap-2 px-1 md:px-5 text-center">
       <div className="flex items-center justify-center gap-2">
         <Link href="/menu">
           <div className="relative h-10 w-10">

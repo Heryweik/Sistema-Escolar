@@ -128,7 +128,7 @@ export default function AsignacionesPage() {
                       <span>No hay asignaciones</span>
                     ) : (
                       /* Modal que muestra el calendario con las asignaciones del estudiante */
-                      <ModalDateImportant asigments />
+                      <ModalDateImportant asigments studentAsigments={student.assignments} />
                     )}
                   </div>
                 </AccordionContent>
