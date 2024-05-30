@@ -15,6 +15,7 @@ import {
   Check,
   ChevronLeft,
   FilePen,
+  Loader2,
   Route,
 } from "lucide-react";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export default function EstudiantesPage() {
   const router = useRouter();
 
   // Informacion de los estudiantes
-  const students = infoStudents
+  const students = infoStudents;
 
   // Estado para controlar el acordeón activo
   // Esto servira para cuando se necesite que un acordeon en especifico este abierto al redirigir desde otra pagina
@@ -38,8 +39,24 @@ export default function EstudiantesPage() {
   const studentId = localStorage.getItem("studentId");
 
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
-    students.length > 0 ? `estudiante-${studentId ? studentId : students[0].id}` : null
+    students.length > 0
+      ? `estudiante-${studentId ? studentId : students[0].id}`
+      : null
   );
+
+  // otro ejemplode como se podria hacer la peticion a la API
+  // Condumir action para obtener la informacion de los estudiantes
+  async function getStudents() {
+    // Aquí se haría la petición a la API para obtener la información de los estudiantes
+    // const data = await fetch("/api/students");
+    // const students = await data.json();
+    // return students;
+  }
+
+  // Llamamos a la funcion para obtener la informacion de los estudiantes, este se ejecutara solo una vez al cargar la pagina
+  /* useEffect(() => {
+    getStudents();
+  }, []); */
 
   return (
     <div className="flex flex-col items-center py-10 md:py-20 h-full relative overflow-y-auto">
@@ -70,6 +87,19 @@ export default function EstudiantesPage() {
             defaultValue={activeAccordion ?? ""}
             onValueChange={(value) => setActiveAccordion(value)}
           >
+            {/* Mostrar loader mientras se obtiene la informacion de los estudiantes */}
+            {/* {students ? (
+              "Aqui iria todo el codigo de abajo que genera los acordeones"
+            ) : (
+              <Loader2 className="h-10 w-10 animate-spin" />
+            )} */}
+
+            {/* students.length <= 3 */ !students && (
+              <div className="w-full h-full grid place-content-center">
+                <Loader2 className="h-10 w-10 animate-spin" />
+              </div>
+            )}
+
             {students.map((student) => (
               <AccordionItem
                 key={student.id}
@@ -88,9 +118,9 @@ export default function EstudiantesPage() {
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="overflow-x-auto">
-                  <div className="flex flex-col w-full gap-2">
+                  <div className="flex flex-col w-full gap-2 px-5">
                     {/* Clases */}
-                    <div className="flex items-center gap-2 justify-between px-5">
+                    <div className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100">
                       <div className="flex items-center justify-center gap-2">
                         <Book className="h-4 w-4" />
                         <span>Clases: {student.classes.length}</span>
@@ -102,13 +132,13 @@ export default function EstudiantesPage() {
                         </Button>
                       ) : (
                         <Link href="/clases">
-                          <Button size={"sm"} >Ver</Button>
+                          <Button size={"sm"}>Ver</Button>
                         </Link>
                       )}
                     </div>
 
                     {/* Asignaciones */}
-                    <div className="flex items-center gap-2 justify-between px-5">
+                    <div className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100">
                       <div className="flex items-center justify-center gap-2">
                         <FilePen className="h-4 w-4" />
                         <span>Asignaciones: {student.assignments.length}</span>
@@ -126,8 +156,8 @@ export default function EstudiantesPage() {
                     </div>
 
                     {/* Llamados de atencion */}
-                    <div className="flex items-center gap-2 justify-between px-5">
-                      <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100">
+                      <div className="flex items-center justify-center gap-2 ">
                         <AlertCircle className="h-4 w-4" />
                         <span>
                           Llamados de atencion: {student.atention.length}
@@ -146,9 +176,7 @@ export default function EstudiantesPage() {
                           // Este trigger es el qeu causa el error de hidration ya que por dentro del triger es un button
                           // Una solucion seria estilar un div y darle los estilos del Button
                           trigger={
-                            <div className="button-default-watch">
-                              Ver
-                            </div>
+                            <div className="button-default-watch">Ver</div>
                           }
                           title="Conducta"
                           icon={<AlertCircle />}
@@ -165,7 +193,7 @@ export default function EstudiantesPage() {
                     </div>
 
                     {/* Ruta */}
-                    <div className="flex items-center gap-2 justify-between px-5">
+                    <div className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100">
                       <div className="flex items-center justify-center gap-2">
                         <Route className="h-4 w-4" />
                         <span>Ruta: {student.route.name}</span>
@@ -174,9 +202,7 @@ export default function EstudiantesPage() {
 
                       <Modal
                         trigger={
-                          <div className="button-default-watch">
-                            Ver
-                          </div>
+                          <div className="button-default-watch">Ver</div>
                         }
                         title={student.route.name}
                         icon={<Route />}
@@ -199,7 +225,7 @@ export default function EstudiantesPage() {
                     </div>
 
                     {/* Encargado */}
-                    <div className="flex items-center gap-2 justify-between px-5">
+                    <div className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 py-3 hover:bg-slate-100">
                       <div className="flex items-center justify-center gap-2">
                         <VscPerson className="h-4 w-4" />
                         <span>Encargado</span>

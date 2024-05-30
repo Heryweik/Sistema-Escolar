@@ -91,7 +91,7 @@ export default function AsigmentForm({ description }: { description: string }) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full space-y-4 "
       >
-        <Card className=" flex flex-col items-center justify-center gap-4 w-full h-auto p-4">
+        <Card className=" flex flex-col items-center justify-center gap-2 w-full h-auto p-4">
           <span>{description}</span>
           <FormField
             // Controla el campo document del formulario.

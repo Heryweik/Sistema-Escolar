@@ -49,6 +49,23 @@ export default function FormLogin() {
     });
   }
 
+  // Ejemplo de como mandar la informacion a las actions que se crearon en el proyecto.
+  /* async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      await postDataHandler(data);
+      // Mostrar toast de exito
+      toast({
+        title: "Inicio de sesion exitoso",
+        description: "Has iniciado sesion correctamente",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error al iniciar sesion",
+        description: error.message,
+      });
+    }
+  } */
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 ">

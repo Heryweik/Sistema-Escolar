@@ -35,4 +35,38 @@ export const infoTeachers = [
       },
     ],
   },
+  {
+    id: 3,
+    name: "Levi",
+    course: "III BTP",
+    classes: [
+      {
+        id: 1,
+        name: "Español",
+        students: 30,
+      },
+      {
+        id: 2,
+        name: "Sistemas",
+        students: 30,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Yupanky",
+    course: "III BTP",
+    classes: [
+      {
+        id: 1,
+        name: "Astronomía",
+        students: 30,
+      },
+      {
+        id: 2,
+        name: "IA",
+        students: 30,
+      },
+    ],
+  },
 ]

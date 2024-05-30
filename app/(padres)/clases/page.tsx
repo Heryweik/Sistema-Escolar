@@ -95,11 +95,11 @@ export default function ClasesPage() {
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="overflow-x-auto">
-                  <div className="flex flex-col w-full gap-2">
+                  <div className="flex flex-col w-full gap-2 px-5">
                     {/* Clases */}
                     {student.classes.map((clase) => (
                       <div
-                        className="flex items-center gap-2 justify-between px-5"
+                        className="flex items-center gap-2 justify-between  border border-slate-200 rounded-md p-1 hover:bg-slate-100"
                         key={clase.id}
                       >
                         <div className="flex items-center justify-center gap-2">
@@ -118,7 +118,7 @@ export default function ClasesPage() {
                             <div className="w-full flex flex-col gap-2">
                               <span>Docente: {clase.teacher}</span>
                               <span>Alumnos: {clase.students}</span>
-                              <Card className="relative flex flex-col items-center justify-center gap-4 w-full h-auto transition-all ease-in-out duration-300 p-4">
+                              <Card className="relative flex flex-col items-center justify-center gap-2 w-full h-auto transition-all ease-in-out duration-300 p-4">
                                 <span className="w-full text-left">
                                   Asignaciones:
                                 </span>
@@ -128,7 +128,7 @@ export default function ClasesPage() {
                                     return (
                                       <div
                                         key={assignment.id}
-                                        className="flex items-center gap-2 justify-between px-5 w-full"
+                                        className="flex items-center gap-2 justify-between  w-full border border-slate-200 rounded-md p-1 hover:bg-slate-100"
                                       >
                                         <div className="flex items-center justify-center gap-2">
                                           <FilePen className="h-4 w-4" />

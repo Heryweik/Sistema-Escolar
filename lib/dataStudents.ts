@@ -48,13 +48,13 @@ export const infoStudents = [
         {
           id: 1,
           name: "Matemáticas",
-          teacher: "Franklin",
+          teacher: "Frankil",
           students: 30,
         },
         {
           id: 2,
           name: "Física",
-          teacher: "Franklin",
+          teacher: "Frankil",
           students: 30,
         },
       ],

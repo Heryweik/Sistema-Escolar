@@ -88,12 +88,12 @@ export default function AsignacionesPage() {
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="overflow-x-auto">
-                  <div className="flex flex-col items-center w-full gap-2">
+                  <div className="flex flex-col items-center w-full gap-2 px-5">
                     {/* Asignaciones */}
 
                     {student.assignments.map((asignacion) => (
                       <div
-                        className="flex w-full items-center gap-2 justify-between px-5"
+                        className="flex w-full items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100"
                         key={asignacion.id}
                       >
                         <div className="flex items-center justify-center gap-2">

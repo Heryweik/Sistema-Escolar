@@ -47,12 +47,12 @@ export default function MenuPage() {
       <div className="flex flex-col items-center gap-10 md:gap-20 justify-center z-10 max-w-4xl  text-center"> {/* mt-80 md:mt-0 */}
         <h1 className="text-3xl font-semibold">Bienvenido Nombre del padre</h1>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 w-full">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-14 md:gap-24 w-full">
           {itemMenu.map((item, index) => (
             <Link key={index} href={item.link}>
-              <Card className="hover:bg-slate-100 flex flex-col items-center justify-center gap-4 w-full md:w-80 h-40 md:h-52 transition-all ease-in-out duration-300">
-                  <item.icon className="w-14 h-14" />
-                  <span className="font-medium text-xl">{item.title}</span>
+              <Card className="hover:bg-slate-100 flex flex-col items-center justify-center gap-4 w-full md:w-80 h-28 sm:h-40 md:h-52 transition-all ease-in-out duration-300 shadow-md">
+                  <item.icon className="w-9 sm:w-14 h-9 sm:h-14" />
+                  <span className="font-medium text-base  sm:text-xl">{item.title}</span>
               </Card>
             </Link>
           ))}
