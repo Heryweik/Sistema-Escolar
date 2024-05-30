@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+
 
 // Informacion inventada de los estudiantes
 export const infoStudents = [
@@ -116,7 +116,7 @@ export const infoStudents = [
           description: "Descripcion de la asignacion",
           allDay: false,
           dateStart: "2024-05-30T12:00:00",
-          dateFinish: "2024-05-30T16:00:00",
+          dateFinish: "2024-05-30T18:00:00",
         },
         {
           id: 2,

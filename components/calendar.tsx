@@ -39,16 +39,48 @@ interface Event {
   id: number;
 }
 
-
 export default function CalendarEvent() {
-
+  // Estos son eventos que deberian de venir desde la BD
   const defaultEvents: Event[] = [
-    { title: "Meeting", start: new Date("2024-05-25T10:00:00"), end: new Date("2024-05-27T18:00:00"), allDay: false, id: 1 },
-    { title: "Conference", start: new Date("2024-05-26T14:00:00"), end: new Date("2024-05-28T17:00:00"), allDay: false, id: 2 },
-    { title: "Workshop", start: new Date("2024-05-27T09:30:00"), allDay: false, id: 3 },
-    { title: "Webinar", start: new Date("2024-05-28T16:00:00"), allDay: false, id: 4 },
-    { title: "Seminar", start: new Date("2024-05-29T11:15:00"), allDay: false, id: 5 },
-    { title: "Hackathon", start: new Date("2024-05-30"), end: new Date("2024-06-01"), allDay: true, id: 6 }
+    {
+      title: "Meeting",
+      start: new Date("2024-05-25T10:00:00"),
+      end: new Date("2024-05-27T18:00:00"),
+      allDay: false,
+      id: 1,
+    },
+    {
+      title: "Conference",
+      start: new Date("2024-05-26T14:00:00"),
+      end: new Date("2024-05-28T17:00:00"),
+      allDay: false,
+      id: 2,
+    },
+    {
+      title: "Workshop",
+      start: new Date("2024-05-27T09:30:00"),
+      allDay: false,
+      id: 3,
+    },
+    {
+      title: "Webinar",
+      start: new Date("2024-05-28T16:00:00"),
+      allDay: false,
+      id: 4,
+    },
+    {
+      title: "Seminar",
+      start: new Date("2024-05-29T11:15:00"),
+      allDay: false,
+      id: 5,
+    },
+    {
+      title: "Hackathon",
+      start: new Date("2024-05-30"),
+      end: new Date("2024-06-01"),
+      allDay: true,
+      id: 6,
+    },
   ];
 
   //Obtenemos la ruta para mostrar el componente con los eventos solo en administracion
@@ -56,9 +88,9 @@ export default function CalendarEvent() {
 
   // Eventos que se pueden arrastrar, esto basicamente seria una lista de eventos que tendriamos en una BD
   const [events, setEvents] = useState([
-    { title: "event 1", id: "1" },
-    { title: "event 2", id: "2" },
-    { title: "event 3", id: "3" },
+    { title: "Feriados", id: "1" },
+    { title: "Feria", id: "2" },
+    { title: "Viaje", id: "3" },
     { title: "event 4", id: "4" },
     { title: "event 5", id: "5" },
   ]);
@@ -213,7 +245,8 @@ export default function CalendarEvent() {
                 left: "prev,next today",
                 center: "title",
                 right: "dayGridMonth,timeGridWeek",
-              }} /* resourceTimelineWook, nextYear prevYear */
+                /* resourceTimelineWook, nextYear prevYear */
+              }}
               events={allEvents as EventSourceInput}
               nowIndicator={true}
               editable={true}
@@ -322,16 +355,19 @@ export default function CalendarEvent() {
                       </div>
                     </div>
                     <div className="bg-gray-50 px-4 py-3 flex flex-col sm:flex-row-reverse gap-2 sm:px-6">
-                      
-                      <Button type="button" onClick={handleDelete} className="w-full sm:w-auto">
+                      <Button
+                        type="button"
+                        onClick={handleDelete}
+                        className="w-full sm:w-auto"
+                      >
                         Eliminar
                       </Button>
-                      
+
                       <Button
                         type="button"
                         onClick={handleCloseModal}
                         className="w-full sm:w-auto"
-                        variant={'outline'}
+                        variant={"outline"}
                       >
                         Cerrar
                       </Button>
@@ -379,10 +415,7 @@ export default function CalendarEvent() {
                   <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white  text-left shadow-xl transition-all w-full max-w-lg">
                     <div className="">
                       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-slate-900 mt-4">
-                        <Check
-                          className="h-9 w-9"
-                          aria-hidden="true"
-                        />
+                        <Check className="h-9 w-9" aria-hidden="true" />
                       </div>
                       <div className="mt-3 text-center sm:mt-5">
                         <DialogTitle
@@ -393,7 +426,6 @@ export default function CalendarEvent() {
                         </DialogTitle>
                         <form action="submit" onSubmit={handleSubmit}>
                           <div className="my-4 mx-4">
-                            
                             <Input
                               type="text"
                               name="title"
@@ -402,22 +434,25 @@ export default function CalendarEvent() {
                               placeholder="Nombre del evento"
                             />
                           </div>
-                          
+
                           <div className="bg-gray-50 px-4 py-3 flex flex-col sm:flex-row-reverse gap-2 sm:px-6">
-                      
-                      <Button type="submit" onClick={handleDelete} className="w-full sm:w-auto">
-                        Crear
-                      </Button>
-                      
-                      <Button
-                        type="button"
-                        onClick={handleCloseModal}
-                        className="w-full sm:w-auto"
-                        variant={'outline'}
-                      >
-                        Cerrar
-                      </Button>
-                    </div>
+                            <Button
+                              type="submit"
+                              onClick={handleDelete}
+                              className="w-full sm:w-auto"
+                            >
+                              Crear
+                            </Button>
+
+                            <Button
+                              type="button"
+                              onClick={handleCloseModal}
+                              className="w-full sm:w-auto"
+                              variant={"outline"}
+                            >
+                              Cerrar
+                            </Button>
+                          </div>
                         </form>
                       </div>
                     </div>
@@ -432,17 +467,27 @@ export default function CalendarEvent() {
   );
 }
 
-
 // Calendario de asignaciones
-export function CalendarAsigments({ studentAsigments }: { studentAsigments: any }) {
-
-  const defaultEvents: Event[] = studentAsigments.map((asigment: { name: any; dateStart: any; dateFinish: any; id: any; allDay: any }) => ({
-    title: asigment.name,
-    start: asigment.dateStart,
-    end: asigment.dateFinish,
-    allDay: asigment.allDay,
-    id: asigment.id,
-  }));
+export function CalendarAsigments({
+  studentAsigments,
+}: {
+  studentAsigments: any;
+}) {
+  const defaultEvents: Event[] = studentAsigments.map(
+    (asigment: {
+      name: any;
+      dateStart: any;
+      dateFinish: any;
+      id: any;
+      allDay: any;
+    }) => ({
+      title: asigment.name,
+      start: asigment.dateStart,
+      end: asigment.dateFinish,
+      allDay: asigment.allDay,
+      id: asigment.id,
+    })
+  );
 
   const [allEvents, setAllEvents] = useState<Event[]>(defaultEvents);
 
@@ -513,7 +558,6 @@ export function CalendarAsigments({ studentAsigments }: { studentAsigments: any 
               selectMirror={true}
             />
           </div>
-
         </div>
       </section>
     </>

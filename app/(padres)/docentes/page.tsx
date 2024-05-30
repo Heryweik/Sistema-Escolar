@@ -52,42 +52,40 @@ export default function DocentesPage() {
             {teachers.length === 0 ? (
               <CommandEmpty className="text-base">No hay docentes</CommandEmpty>
             ) : (
-              <CommandEmpty className="text-base">Este docente no existe</CommandEmpty>
+              <CommandEmpty className="text-base">
+                Este docente no existe
+              </CommandEmpty>
             )}
             {/* Al momento de cargar los docentes debe de aparecer un loader o un skeleton, esto mismo se aplicario para todas las partes en las que recibe informacion del server */}
             {teachers.map((teacher) => (
-              <CommandItem key={teacher.id} className="mb-2 flex items-center justify-between p-1 w-full text-base border border-slate-200 rounded-md">
-                <span>{teacher.name}</span>
+              <CommandItem
+                key={teacher.id}
+                className="mb-2 flex items-center justify-between p-1 w-full text-base border border-slate-200 rounded-md gap-2"
+              >
+                <span className="truncate">{teacher.name}</span>
 
                 {/* Modal de la asignacion */}
                 <Modal
-                          trigger={
-                            <div className="button-default-watch">
-                              Ver
-                            </div>
-                          }
-                          title={teacher.name}
-                          icon={<PiChalkboardTeacherLight />}
-                          content={
-                            <Card className="relative flex flex-col items-center justify-center gap-2 w-full h-auto transition-all ease-in-out duration-300 p-4">
-                                <span className="w-full text-left">
-                                  Clases:
-                                </span>
-                                {teacher.classes.map((clase) => (
-                                  <div
-                                    key={clase.id}
-                                    className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100 w-full"
-                                  >
-                                    <div className="flex items-center justify-center gap-2">
-                                      <Book className="h-4 w-4" />
-                                      <span>{clase.name}</span>
-                                    </div>
-                                  </div>
-                                ))}
-                              </Card>
-                          }
-                          
-                        />
+                  trigger={<div className="button-default-watch">Ver</div>}
+                  title={teacher.name}
+                  icon={<PiChalkboardTeacherLight />}
+                  content={
+                    <Card className="relative flex flex-col items-center justify-center gap-2 w-full h-auto transition-all ease-in-out duration-300 p-4">
+                      <span className="w-full text-left">Clases:</span>
+                      {teacher.classes.map((clase) => (
+                        <div
+                          key={clase.id}
+                          className="flex items-center gap-2 justify-between border border-slate-200 rounded-md p-1 hover:bg-slate-100 w-full"
+                        >
+                          <div className="flex items-center justify-center gap-2">
+                            <Book className="h-4 w-4" />
+                            <span>{clase.name}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </Card>
+                  }
+                />
               </CommandItem>
             ))}
           </CommandList>

@@ -64,12 +64,9 @@ export default function AsigmentForm({ description }: { description: string }) {
     toast({
       title: "Subida de archivo exitosa",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">
-            {/* al enviar el documento solo se envia el nombre, esto es solo para demostracion, al final se debe de enviar toda la data para que se guarde el documento */}
-            {JSON.stringify(data.document.name, null, 2)}
-          </code>
-        </pre>
+        <span>
+          {JSON.stringify(data.document.name, null, 2)}
+        </span>
       ),
     });
   }

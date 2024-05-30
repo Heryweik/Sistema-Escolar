@@ -16,6 +16,15 @@ export async function postDataHandler(data: z.infer<typeof FormSchema>) {
   const email = data.email
   const password = data.password
 
+  //Ejemplo con axios
+  /* try {
+    const response = await axios.post('/api/login', { email, password }) // Aquí se haría la petición a la API
+    
+    const data = response.data
+  } catch (error) {
+    console.error(error)
+  } */
+
 
   // Aquí se haría la petición a la API para crear la nota
   /* await prisma.note.create({
@@ -31,5 +40,5 @@ export async function postDataHandler(data: z.infer<typeof FormSchema>) {
   revalidatePath('/dashboard')
 
   // Redirigimos a la página de administración
-  return redirect("/administracion");
+  return data;
 }

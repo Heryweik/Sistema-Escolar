@@ -45,10 +45,10 @@ export function AtentionForm({ items }: { items: Item[] }) {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
-      title: "You submitted the following values:",
+      title: "Marcaste como visto los llamados de atención:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          {<code className="text-white">{JSON.stringify(data, null, 2)}</code>}
         </pre>
       ),
     });

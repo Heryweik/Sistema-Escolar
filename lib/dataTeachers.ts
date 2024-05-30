@@ -53,8 +53,8 @@ export const infoTeachers = [
     ],
   },
   {
-    id: 2,
-    name: "Yupanky",
+    id: 4,
+    name: "Yupanky kajhsdkj akjsdhkjashdkjhaskdjhkajshdk ahsdkjh askdhajksd kjashdkjhaksdjh",
     course: "III BTP",
     classes: [
       {

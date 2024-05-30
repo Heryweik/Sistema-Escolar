@@ -46,12 +46,13 @@ export default function EstudiantesPage() {
 
   // otro ejemplode como se podria hacer la peticion a la API
   // Condumir action para obtener la informacion de los estudiantes
-  async function getStudents() {
+  /* async function getStudents() {
     // Aquí se haría la petición a la API para obtener la información de los estudiantes
-    // const data = await fetch("/api/students");
-    // const students = await data.json();
-    // return students;
+    const data = await fetch("/api/students");
+    const students = await data.json();
+    return students;
   }
+ */
 
   // Llamamos a la funcion para obtener la informacion de los estudiantes, este se ejecutara solo una vez al cargar la pagina
   /* useEffect(() => {
@@ -94,11 +95,13 @@ export default function EstudiantesPage() {
               <Loader2 className="h-10 w-10 animate-spin" />
             )} */}
 
-            {/* students.length <= 3 */ !students && (
-              <div className="w-full h-full grid place-content-center">
-                <Loader2 className="h-10 w-10 animate-spin" />
-              </div>
-            )}
+            {
+              /* students.length <= 3 */ !students && (
+                <div className="w-full h-full grid place-content-center">
+                  <Loader2 className="h-10 w-10 animate-spin" />
+                </div>
+              )
+            }
 
             {students.map((student) => (
               <AccordionItem

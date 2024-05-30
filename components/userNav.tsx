@@ -19,7 +19,7 @@ import Modal from "./modal";
 
 export default function UserNav() {
   // Obtenemos la primera letra del nombre para mostrarla en el avatar si no hay imagen o no la ha cargado
-  let name = "Shad";
+  let name = "Juan";
   const fisrtLetter = name.charAt(0).toUpperCase();
 
   const pathname = usePathname();
@@ -29,7 +29,7 @@ export default function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant={"ghost"} className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10 rounded-full">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="" alt="@shadcn" />
             <AvatarFallback>{fisrtLetter}</AvatarFallback>
           </Avatar>
         </Button>
